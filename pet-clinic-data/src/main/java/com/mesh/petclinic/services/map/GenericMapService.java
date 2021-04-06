@@ -1,6 +1,7 @@
-package com.mesh.petclinic.services;
+package com.mesh.petclinic.services.map;
 
 import com.mesh.petclinic.model.BaseEntity;
+import com.mesh.petclinic.services.CrudService;
 
 import java.util.HashMap;
 import java.util.HashSet;
