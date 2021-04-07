@@ -22,7 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>11</java.version>
-        <fix-lombok-version>1.18.20</fix-lombok-version><!--        Required update because doesnt work with JDK 16-->
+<!--        <fix-lombok-version>1.18.20</fix-lombok-version>&lt;!&ndash;        Required update because doesnt work with JDK 16&ndash;&gt;-->
     </properties>
     <dependencies>
         <dependency>
@@ -33,7 +33,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${fix-lombok-version}</version>
+<!--            <version>${fix-lombok-version}</version>-->
             <optional>true</optional>
         </dependency>
     </dependencies>
