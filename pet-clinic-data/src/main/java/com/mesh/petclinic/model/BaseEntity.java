@@ -1,15 +1,33 @@
 package com.mesh.petclinic.model;
 
-import lombok.Data;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.io.Serializable;
+import javax.persistence.MappedSuperclass;
+import java.time.LocalDateTime;
 
-@Data
-public class BaseEntity implements Serializable {
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+@MappedSuperclass
+@EqualsAndHashCode
+public class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    public BaseEntity(Long id) {
+        this.id = id;
+    }
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 }
