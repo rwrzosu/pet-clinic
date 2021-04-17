@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @ToString
 @MappedSuperclass
-@EqualsAndHashCode
+@EqualsAndHashCode(of = {"id"})
 public class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -17,8 +17,8 @@ class OwnerMapServiceTest {
 
     @Test
     void findByLastName() {
-        oms.save(new Owner("a", "b"));
-        oms.save(new Owner("b", "c"));
+        oms.save(Owner.builder().firstName("a").lastName("b").build());
+        oms.save(Owner.builder().firstName("b").lastName("c").build());
         Owner owner = oms.findByLastName("b");
 
         assertNotNull(owner);
@@ -27,8 +27,8 @@ class OwnerMapServiceTest {
 
     @Test
     void checkEquals() {
-        Owner o1 = new Owner("a", "b");
-        Owner o2 = new Owner("a", "b");
+        Owner o1 = Owner.builder().firstName("a").lastName("b").build();
+        Owner o2 = Owner.builder().firstName("a").lastName("b").build();
         oms.save(o1);
         oms.save(o2);
         assertEquals(2L, oms.findAll().size()); // should be diffrent by id

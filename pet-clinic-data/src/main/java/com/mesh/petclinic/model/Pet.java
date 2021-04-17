@@ -11,8 +11,8 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString(callSuper = true, exclude = {"owner"})
+@EqualsAndHashCode(callSuper = true, of = {})
 @Entity
 public class Pet extends BaseEntity {
     private String name;
@@ -27,8 +27,10 @@ public class Pet extends BaseEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet", fetch = FetchType.EAGER)
     private Set<Visit> visits = new HashSet<>();
 
-    public Pet(PetType petType, Owner owner, LocalDate dob) {
-        super();
+    @Builder
+    private Pet(Long id, String name, PetType petType, Owner owner, LocalDate dob) {
+        super(id);
+        this.name = name;
         this.petType = petType;
         this.owner = owner;
         this.dob = dob;

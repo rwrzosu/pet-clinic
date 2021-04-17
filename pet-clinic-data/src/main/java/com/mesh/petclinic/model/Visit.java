@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true, of = {})
 @Entity
 public class Visit extends BaseEntity {
     @ManyToOne

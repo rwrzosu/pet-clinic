@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 @Setter
 @Getter
 @ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true, of = {})
 @Entity
 public class Speciality extends BaseEntity {
     private String description;

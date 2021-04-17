@@ -8,6 +8,7 @@ import com.mesh.petclinic.services.*;
 import com.mesh.petclinic.services.map.OwnerMapService;
 import com.mesh.petclinic.services.springdatajpa.OwnerSDJpaService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,7 @@ import java.time.LocalDate;
 
 @Component
 @AllArgsConstructor
+@Slf4j
 public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
@@ -24,41 +26,41 @@ public class DataLoader implements CommandLineRunner {
 
     public void confirmProfile() {
         if (ownerService instanceof OwnerSDJpaService) {
-            System.out.println("Used Spring Data JPA Services");
+            log.debug("Used Spring Data JPA Services");
             return;
         }
         if (ownerService instanceof OwnerMapService) {
-            System.out.println("Used Map Services");
+            log.debug("Used Map Services");
             return;
         }
         throw new RuntimeException("unsoported service type");
     }
 
     public void loadData(boolean isShowing) {
-        PetType dogPetType = new PetType("dog");
-        PetType catPetType = new PetType("cat");
+        PetType dogPetType = PetType.builder().name("dog").build();
+        PetType catPetType = PetType.builder().name("cat").build();
 
         petTypeService.save(dogPetType);
         petTypeService.save(catPetType);
         if (isShowing) this.printDomainObject(petTypeService);
 
-        Owner lauraOwner = new Owner("Laura", "Wrzos1");
-        Owner konstantyOwner = new Owner("Konstanty", "Wrzos2");
+        Owner lauraOwner = Owner.builder().firstName("Laura").lastName("Wrzos").build();
+        Owner konstantyOwner = Owner.builder().firstName("Konstanty").lastName("Wrzos").build();
 
         ownerService.save(lauraOwner);
         ownerService.save(konstantyOwner);
         if (isShowing) this.printDomainObject(ownerService);
 
-        Pet szczekacz = new Pet(dogPetType, lauraOwner, LocalDate.of(2020, 1, 1));
-        Pet mruczek = new Pet(catPetType, konstantyOwner, LocalDate.of(2020, 2, 2));
+        Pet szczekacz = Pet.builder().name("szczekacz").petType(dogPetType).owner(lauraOwner).dob(LocalDate.of(2020, 1, 1)).build();
+        Pet mruczek = Pet.builder().name("mruczek").petType(catPetType).owner(konstantyOwner).dob(LocalDate.of(2020, 2, 2)).build();
 
         petService.save(szczekacz);
         petService.save(mruczek);
         if (isShowing) this.printDomainObject(petService);
 
-        Vet vet1 = new Vet("Aaa", "Bbb");
-        Vet vet2 = new Vet("Ccc", "Ddd");
-        Vet vet3 = new Vet("Eee", "Fff");
+        Vet vet1 = Vet.builder().firstName("Aaa").lastName("Bbb").build();
+        Vet vet2 = Vet.builder().firstName("Ccc").lastName("Ddd").build();
+        Vet vet3 = Vet.builder().firstName("Eee").lastName("Fff").build();
         vetService.save(vet1);
         vetService.save(vet2);
         vetService.save(vet3);

@@ -1,17 +1,14 @@
 package com.mesh.petclinic.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true, of = {})
 @Entity
 public class PetType extends BaseEntity {
     private String name;
@@ -19,5 +16,11 @@ public class PetType extends BaseEntity {
     @Override
     public String toString() {
         return getName();
+    }
+
+    @Builder
+    private PetType(Long id, String name) {
+        super(id);
+        this.name = name;
     }
 }

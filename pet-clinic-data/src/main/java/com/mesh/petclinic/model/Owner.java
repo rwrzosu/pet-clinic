@@ -15,17 +15,13 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true, of = {})
 public class Owner extends Person {
     private String address;
     private String city;
     private String telephone;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner", fetch = FetchType.EAGER)
     private Set<Pet> pets = new HashSet<>();
-
-    public Owner(String firstName, String lastName) {
-        super(firstName, lastName);
-    }
 
     @Builder
     private Owner(Long id, String firstName, String lastName, String address, String city, String telephone) {

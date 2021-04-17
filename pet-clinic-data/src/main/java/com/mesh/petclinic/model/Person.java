@@ -10,7 +10,7 @@ import javax.persistence.MappedSuperclass;
 @AllArgsConstructor
 @ToString(callSuper = true)
 @MappedSuperclass
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true, of = {})
 public class Person extends BaseEntity{
     private String firstName;
     private String lastName;
