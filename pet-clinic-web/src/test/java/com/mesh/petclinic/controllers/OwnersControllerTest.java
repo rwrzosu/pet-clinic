@@ -29,16 +29,18 @@ class OwnersControllerTest {
 
     @Mock
     OwnerService ownerService;
+
     @InjectMocks
     OwnersController controller;
+
     Set<Owner> owners;
     MockMvc mockMvc;
 
     @BeforeEach
     void setUp() {
         owners = new HashSet<>();
-        owners.add(Owner.builder().id(1l).build());
-        owners.add(Owner.builder().id(2l).build());
+        owners.add(Owner.builder().id(1L).build());
+        owners.add(Owner.builder().id(2L).build());
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
