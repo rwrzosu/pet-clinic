@@ -23,6 +23,7 @@
         <java.version>11</java.version>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.source>${java.version}</maven.compiler.source>
+        <custom.lombok.version>1.18.20</custom.lombok.version>
     </properties>
 
     <build>

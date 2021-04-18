@@ -51,6 +51,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>${custom.lombok.version}</version>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
