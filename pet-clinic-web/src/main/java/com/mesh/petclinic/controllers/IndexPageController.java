@@ -21,4 +21,9 @@ public class IndexPageController {
     public String oups2() {
         throw new NotFoundException("kaboom");
     }
+
+    @GetMapping({"oups3"})
+    public String oups3() {
+        throw new NumberFormatException("kaboom");
+    }
 }

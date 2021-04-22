@@ -6,6 +6,11 @@
 </head>
 <body>
 <h2 th:text="'Custom Error!!!!'">?</h2>
+<!--/*@thymesVar id="errorMsg" type="java.lang.String"*/-->
 <p th:text="${errorMsg}"></p>
+
+<!--/*@thymesVar id="stackTrace" type="java.lang.String"*/-->
+<h3 th:if="${stackTrace}">Stack Trace: </h3>
+<p th:text="${stackTrace}"></p>
 </body>
 </html>

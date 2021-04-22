@@ -6,6 +6,7 @@
 </head>
 <body>
 <h2 th:text="'Default Error Page!!!!'">?</h2>
-<p th:text="${status}"></p>
+<!--/*@thymesVar id="status" type="java.lang.Integer"*/-->
+<p th:text="'statusCode: ' + ${status}"></p>
 </body>
 </html>
