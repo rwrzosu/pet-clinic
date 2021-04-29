@@ -1,0 +1,32 @@
+//odpala kontener jako deamon z wystawionym portem
+docker run -d -p 27017:27017 --name mymongo mongo
+
+// podpina się logi z kontenera odpalonego jako deamon
+docker logs -f mymongo
+
+// ściąga obraz z docker hub'a
+docker pull mongo
+
+// wyświetla uruchomione kontenery
+docker ps
+
+// wyświetla uruchomione/zatrzymane kontenery
+docker ps -a
+
+// wyświetla obrazy z pełnym SHA256 hash'em
+docker images --no-trunc
+
+docker run -d -p 27017:27017 --name mymongo -v c//dockerdata//mongo//:/data/db mongo
+
+docker stop mysql; docker rm mysql
+docker run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -v c//dockerdata//mysql//:/var/lib/mysql -p 3306:3306 mysql
+
+docker kill $(docker ps -q)
+docker rm $(docker ps -a -q)
+
+//dangling tj. nieskojarzony z żadnym kontenerem
+docker rmi <image name>
+docker rmi $(docker images -q -f dangling=true)
+docker rmi $(docker images -q)
+
+docker volume rm $(docker volume ls -f dangling=true -q)

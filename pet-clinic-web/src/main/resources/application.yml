@@ -1,26 +1,19 @@
 spring:
   profiles:
-    active: dev, springdatajpa, debug
-
+    active: springdatajpa, debug
   jpa:
     show-sql: false
-
----
-spring:
-  config:
-    activate:
-      on-profile: dev
+#    properties:
+#      javax:
+#        persistence:
+#          schema-generation:
+#            scripts:
+#              action: create-drop
+#              create-target: "create.sql"
+#              drop-target: "drop.sql"
   h2:
     console:
       enabled: false
   datasource:
     url: 'jdbc:h2:mem:testdb'
-  jpa:
-    show-sql: false
----
-spring:
-  config:
-    activate:
-      on-profile: debug
-  jpa:
-    show-sql: false
+    platform: h2
