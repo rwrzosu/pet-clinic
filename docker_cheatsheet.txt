@@ -30,3 +30,9 @@ docker rmi $(docker images -q -f dangling=true)
 docker rmi $(docker images -q)
 
 docker volume rm $(docker volume ls -f dangling=true -q)
+
+docker run -d centos tail -f /dev/null
+
+// buduje obraz na podstawie Dockerfile
+docker build -t spring-boot-app .
+
