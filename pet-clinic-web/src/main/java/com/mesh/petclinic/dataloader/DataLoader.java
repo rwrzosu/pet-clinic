@@ -1,5 +1,6 @@
 package com.mesh.petclinic.dataloader;
 
+import com.mesh.petclinic.config.FakeDataSource;
 import com.mesh.petclinic.model.Owner;
 import com.mesh.petclinic.model.Vet;
 import com.mesh.petclinic.services.OwnerService;
@@ -12,10 +13,12 @@ public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final FakeDataSource fakeDataSource;
 
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, FakeDataSource fakeDataSource) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.fakeDataSource = fakeDataSource;
     }
 
     @Override
@@ -47,5 +50,9 @@ public class DataLoader implements CommandLineRunner {
         if(vetService.count() != 2){
             throw new RuntimeException("!=2");
         }
+
+//        System.out.println(fakeDataSource.getUsername());
+//        System.out.println(fakeDataSource.getPassword());
+//        System.out.println(fakeDataSource.getJdbcurl());
     }
 }
