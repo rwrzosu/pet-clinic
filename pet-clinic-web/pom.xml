@@ -34,5 +34,10 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.mesh</groupId>
+            <artifactId>pet-clinic-data</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

@@ -25,7 +25,8 @@ public abstract class AbstractMapService<T extends BaseEntity> implements Generi
             else
                 item.setId(this.map.keySet().stream().max(Long::compareTo).get() + 1L);
         }
-        return this.map.put(item.getId(), item);
+        this.map.put(item.getId(), item);
+        return item;
     }
 
     @Override
@@ -41,5 +42,10 @@ public abstract class AbstractMapService<T extends BaseEntity> implements Generi
     @Override
     public void deleteById(Long id) {
         this.map.remove(id);
+    }
+
+    @Override
+    public Long count() {
+        return (long) this.map.size();
     }
 }
