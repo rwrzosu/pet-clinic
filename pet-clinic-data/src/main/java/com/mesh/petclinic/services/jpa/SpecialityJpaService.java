@@ -24,7 +24,7 @@ public class SpecialityJpaService implements SpecialityService {
 
     @Override
     public Speciality save(Speciality item) {
-        return findById(item.getId());
+        return specialityRepository.save(item);
     }
 
     @Override

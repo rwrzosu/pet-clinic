@@ -24,7 +24,7 @@ public class OwnerJpaService implements OwnerService {
 
     @Override
     public Owner save(Owner item) {
-        return findById(item.getId());
+        return ownerRepository.save(item);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.mesh.petclinic.services.jpa;
 
-import com.mesh.petclinic.model.Pet;
 import com.mesh.petclinic.model.Vet;
 import com.mesh.petclinic.services.VetService;
 import org.springframework.context.annotation.Profile;
@@ -25,7 +24,7 @@ public class VetJpaService implements VetService {
 
     @Override
     public Vet save(Vet item) {
-        return findById(item.getId());
+        return vetRepository.save(item);
     }
 
     @Override

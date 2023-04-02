@@ -24,7 +24,7 @@ public class PetTypeJpaService implements PetTypeService {
 
     @Override
     public PetType save(PetType item) {
-        return findById(item.getId());
+        return petTypeRepository.save(item);
     }
 
     @Override
