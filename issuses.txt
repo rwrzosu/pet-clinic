@@ -1,0 +1,2 @@
+
+- use release maven plugin
