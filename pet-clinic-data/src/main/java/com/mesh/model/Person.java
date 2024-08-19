@@ -1,4 +1,4 @@
-package com.mesh.petclinic.model;
+package com.mesh.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

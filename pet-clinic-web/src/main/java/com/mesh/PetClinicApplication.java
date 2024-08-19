@@ -1,4 +1,4 @@
-package com.mesh.petclinic;
+package com.mesh;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

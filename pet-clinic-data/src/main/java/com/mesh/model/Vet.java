@@ -1,6 +1,4 @@
-package com.mesh.petclinic.model;
-
-import lombok.AllArgsConstructor;
+package com.mesh.model;
 
 public class Vet extends Person {
 

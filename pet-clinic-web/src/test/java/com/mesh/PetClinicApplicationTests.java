@@ -1,4 +1,4 @@
-package com.mesh.petclinic;
+package com.mesh;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
