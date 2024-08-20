@@ -21,18 +21,22 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Owner owner1 = Owner.builder().firstName("fn1").lastName("ln1").build();
         Owner owner2 = Owner.builder().firstName("fn2").lastName("ln2").build();
+        Owner owner3 = Owner.builder().firstName("fn3").lastName("ln3").build();
 
         this.ownerService.save(owner1);
         this.ownerService.save(owner2);
+        this.ownerService.save(owner3);
 
         Vet vet1 = Vet.builder().firstName("fn1").lastName("ln1").build();
         Vet vet2 = Vet.builder().firstName("fn2").lastName("ln2").build();
+        Vet vet3 = Vet.builder().firstName("fn3").lastName("ln3").build();
 
         this.vetService.save(vet1);
         this.vetService.save(vet2);
+        this.vetService.save(vet3);
 
 
-        assert 2 == this.ownerService.findAll().size();
-        assert 2 == this.vetService.findAll().size();
+        assert 3 == this.ownerService.findAll().size();
+        assert 3 == this.vetService.findAll().size();
     }
 }
