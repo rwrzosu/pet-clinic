@@ -11,14 +11,19 @@ import org.springframework.stereotype.Component;
 public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PropertyDummySource propertyDummySource;
 
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PropertyDummySource propertyDummySource) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.propertyDummySource = propertyDummySource;
     }
 
     @Override
     public void run(String... args) throws Exception {
+
+        System.out.println("PropertyDummySource:msg = " + propertyDummySource.getMsg());
+
         Owner owner1 = Owner.builder().firstName("fn1").lastName("ln1").build();
         Owner owner2 = Owner.builder().firstName("fn2").lastName("ln2").build();
         Owner owner3 = Owner.builder().firstName("fn3").lastName("ln3").build();
