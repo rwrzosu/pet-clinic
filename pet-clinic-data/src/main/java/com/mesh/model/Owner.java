@@ -1,13 +1,17 @@
 package com.mesh.model;
 
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@EqualsAndHashCode(callSuper = true)
 public class Owner extends Person {
 
-    public Owner(String firstName, String lastName) {
-        super(firstName, lastName);
+    @Builder
+    public Owner(Long id, String firstName, String lastName) {
+        super(id, firstName, lastName);
     }
 }

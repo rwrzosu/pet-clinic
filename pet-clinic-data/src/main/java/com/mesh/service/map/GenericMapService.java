@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeMap;
 
-public class GenericMapService<T extends BaseEntity, ID extends Long> implements CrudService<T, ID> {
+public abstract class GenericMapService<T extends BaseEntity, ID extends Long> implements CrudService<T, ID> {
     protected final TreeMap<Long, T> map = new TreeMap<>();
 
     @Override
@@ -19,7 +19,7 @@ public class GenericMapService<T extends BaseEntity, ID extends Long> implements
     public T save(T item) {
         Long id = item.getId();
 //        Optional<Long> maxId = map.keySet().stream().max(Long::compareTo);
-        if (map.containsKey(id)) throw new RuntimeException("Duplicate key");
+        if (id != null && map.containsKey(id)) throw new RuntimeException("Duplicate key");
         if (id == null) {
             if (map.isEmpty()) {
                 id = 1L;
@@ -45,5 +45,10 @@ public class GenericMapService<T extends BaseEntity, ID extends Long> implements
     @Override
     public void deleteById(ID id) {
         map.remove(id);
+    }
+
+    @Override
+    public Long count() {
+        return (long) this.map.size();
     }
 }

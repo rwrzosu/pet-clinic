@@ -12,4 +12,6 @@ public interface CrudService<T, ID> {
     void delete(T item);
 
     void deleteById(ID id);
+
+    Long count();
 }
