@@ -22,7 +22,9 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        System.out.println("PropertyDummySource:msg = " + propertyDummySource.getMsg());
+        System.out.println(propertyDummySource.getUsername());
+        System.out.println(propertyDummySource.getPassword());
+        System.out.println(propertyDummySource.getUrl());
 
         Owner owner1 = Owner.builder().firstName("fn1").lastName("ln1").build();
         Owner owner2 = Owner.builder().firstName("fn2").lastName("ln2").build();
