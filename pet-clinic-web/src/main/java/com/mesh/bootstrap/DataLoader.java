@@ -12,11 +12,13 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
     private final PropertyDummySource propertyDummySource;
+    private final PropertyDummySourceByContructor propertyDummySourceByContructor;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PropertyDummySource propertyDummySource) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PropertyDummySource propertyDummySource, PropertyDummySourceByContructor propertyDummySourceByContructor) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.propertyDummySource = propertyDummySource;
+        this.propertyDummySourceByContructor = propertyDummySourceByContructor;
     }
 
     @Override
@@ -25,6 +27,10 @@ public class DataLoader implements CommandLineRunner {
         System.out.println(propertyDummySource.getUsername());
         System.out.println(propertyDummySource.getPassword());
         System.out.println(propertyDummySource.getUrl());
+
+        System.out.println(propertyDummySourceByContructor.getUsername());
+        System.out.println(propertyDummySourceByContructor.getPassword());
+        System.out.println(propertyDummySourceByContructor.getUrl());
 
         Owner owner1 = Owner.builder().firstName("fn1").lastName("ln1").build();
         Owner owner2 = Owner.builder().firstName("fn2").lastName("ln2").build();

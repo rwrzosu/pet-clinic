@@ -1,9 +1,14 @@
 spring:
   profiles:
-    active: dev
+    active:
+      - dev
   application:
     name: pet-clinic
 dummysource:
   username: userdefault
   password: passworddefault
   url: urldefault
+dummysource2:
+  username: userdefault2
+  password: passworddefault2
+  url: urldefault2
