@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: pet-clinic
+dummysource:
+  username: userdefault
+  password: passworddefault
+  url: urldefault
