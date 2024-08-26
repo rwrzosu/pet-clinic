@@ -1,7 +1,6 @@
 package com.mesh.model;
 
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,8 +8,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-@EqualsAndHashCode(callSuper = true)
-public class Pet extends BaseEntity{
+public class Pet extends BaseEntity {
     private LocalDate birthDate;
     private Owner owner;
     private PetType petType;
@@ -21,5 +19,18 @@ public class Pet extends BaseEntity{
         this.birthDate = birthDate;
         this.owner = owner;
         this.petType = petType;
+    }
+
+    @Override
+    public final boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Pet pet)) return false;
+
+        return getId().equals(pet.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getId().hashCode();
     }
 }

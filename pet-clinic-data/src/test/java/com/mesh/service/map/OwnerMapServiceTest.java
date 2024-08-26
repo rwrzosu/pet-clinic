@@ -74,4 +74,10 @@ class OwnerMapServiceTest {
         Owner found = ownerMapService.findByLastName(owner1.getLastName());
         assertEquals(owner1.getLastName(), found.getLastName());
     }
+
+    @Test
+    void hashAndEquals() {
+        Owner found = ownerMapService.findByLastName(owner1.getLastName());
+        assertEquals(owner1.getLastName(), found.getLastName());
+    }
 }
