@@ -1,13 +1,15 @@
 package com.mesh.model;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-@EqualsAndHashCode(of = {"id"})
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 public class BaseEntity implements Serializable {
     private Long id;
 
