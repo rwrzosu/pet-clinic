@@ -26,9 +26,9 @@ public class Visit extends BaseEntity {
     @Override
     public final boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Visit visit)) return false;
+        if (!(o instanceof Visit owner)) return false;
 
-        return getId().equals(visit.getId());
+        return getId().equals(owner.getId());
     }
 
     @Override

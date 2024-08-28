@@ -4,9 +4,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter
 @Setter
 public class Vet extends Person {
+
+    private final Set<Speciality> specialities = new HashSet<>();
 
     @Builder
     public Vet(Long id, String firstName, String lastName) {
