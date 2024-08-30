@@ -1,13 +1,7 @@
 package com.mesh.bootstrap;
 
-import com.mesh.model.Owner;
-import com.mesh.model.Pet;
-import com.mesh.model.PetType;
-import com.mesh.model.Vet;
-import com.mesh.service.OwnerService;
-import com.mesh.service.PetService;
-import com.mesh.service.PetTypeService;
-import com.mesh.service.VetService;
+import com.mesh.model.*;
+import com.mesh.service.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -21,26 +15,32 @@ public class DataLoader implements CommandLineRunner {
     private final PropertyDummySourceByContructor propertyDummySourceByContructor;
     private final PetTypeService petTypeService;
     private final PetService petService;
+    private final SpecialityService specialityService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PropertyDummySource propertyDummySource, PropertyDummySourceByContructor propertyDummySourceByContructor, PetTypeService petTypeService, PetService petService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PropertyDummySource propertyDummySource, PropertyDummySourceByContructor propertyDummySourceByContructor, PetTypeService petTypeService, PetService petService, SpecialityService specialityService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.propertyDummySource = propertyDummySource;
         this.propertyDummySourceByContructor = propertyDummySourceByContructor;
         this.petTypeService = petTypeService;
         this.petService = petService;
+        this.specialityService = specialityService;
     }
 
     @Override
     public void run(String... args) throws Exception {
+        if ((long) petTypeService.findAll().size() == 0) loadData();
 
-        System.out.println(propertyDummySource.getUsername());
-        System.out.println(propertyDummySource.getPassword());
-        System.out.println(propertyDummySource.getUrl());
+    }
+
+    private void loadData() {
+        //        System.out.println(propertyDummySource.getUsername());
+//        System.out.println(propertyDummySource.getPassword());
+//        System.out.println(propertyDummySource.getUrl());
 
         System.out.println(propertyDummySourceByContructor.getUsername());
-        System.out.println(propertyDummySourceByContructor.getPassword());
-        System.out.println(propertyDummySourceByContructor.getUrl());
+//        System.out.println(propertyDummySourceByContructor.getPassword());
+//        System.out.println(propertyDummySourceByContructor.getUrl());
 
         PetType dogPetType = PetType.builder().name("dog").build();
         PetType catPetType = PetType.builder().name("cat").build();
@@ -66,9 +66,19 @@ public class DataLoader implements CommandLineRunner {
         this.ownerService.save(owner2);
         this.ownerService.save(owner3);
 
+        Speciality speciality1 = Speciality.builder().name("speciality1").build();
+        Speciality speciality2 = Speciality.builder().name("speciality2").build();
+        Speciality speciality3 = Speciality.builder().name("speciality3").build();
+        specialityService.save(speciality1);
+        specialityService.save(speciality2);
+        specialityService.save(speciality3);
+
         Vet vet1 = Vet.builder().firstName("fn1").lastName("ln1").build();
         Vet vet2 = Vet.builder().firstName("fn2").lastName("ln2").build();
         Vet vet3 = Vet.builder().firstName("fn3").lastName("ln3").build();
+        vet1.getSpecialities().add(speciality1);
+        vet2.getSpecialities().add(speciality2);
+        vet3.getSpecialities().add(speciality3);
 
         this.vetService.save(vet1);
         this.vetService.save(vet2);
