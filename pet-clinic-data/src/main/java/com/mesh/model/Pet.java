@@ -9,16 +9,18 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class Pet extends BaseEntity {
+    private String name;
     private LocalDate birthDate;
     private Owner owner;
     private PetType petType;
 
     @Builder
-    public Pet(Long id, LocalDate birthDate, Owner owner, PetType petType) {
+    public Pet(Long id, LocalDate birthDate, Owner owner, PetType petType, String name) {
         super(id);
         this.birthDate = birthDate;
         this.owner = owner;
         this.petType = petType;
+        this.name = name;
     }
 
     @Override

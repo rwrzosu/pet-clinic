@@ -17,7 +17,7 @@ class OwnerMapServiceTest {
 
     @BeforeEach
     void setUp() {
-        this.ownerMapService = new OwnerMapService();
+        this.ownerMapService = new OwnerMapService(new PetTypeMapService(), new PetMapService());
         this.owner1 = Owner.builder().id(1L).firstName("fn1").lastName("ln1").build();
         this.owner2 = Owner.builder().id(2L).firstName("fn2").lastName("ln2").build();
         this.ownerMapService.save(owner1);
